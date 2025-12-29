@@ -38,7 +38,12 @@ export const useRootStore = defineStore(STORES.ROOT, () => {
 	const state = ref<RootStoreState>({
 		baseUrl: VUE_APP_URL_BASE_API ?? window.BASE_PATH,
 		restEndpoint: getConfigFromMetaTag('rest-endpoint') ?? 'rest',
-		defaultLocale: 'en',
+		  /**
+			* 修改说明：默认语言已从 'en' 改为 'zh-CN'，便于开发过程中直接查看中文界面。
+			* 作者：wonkzhang
+			* 修改日期：2025-12-29
+			*/
+		  defaultLocale: 'zh-CN',
 		endpointForm: 'form',
 		endpointFormTest: 'form-test',
 		endpointFormWaiting: 'form-waiting',

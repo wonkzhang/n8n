@@ -274,7 +274,16 @@ export const useSettingsStore = defineStore(STORES.SETTINGS, () => {
 		rootStore.setInstanceId(fetchedSettings.instanceId);
 		rootStore.setOauthCallbackUrls(fetchedSettings.oauthCallbackUrls);
 		rootStore.setN8nMetadata(fetchedSettings.n8nMetadata || {});
-		rootStore.setDefaultLocale(fetchedSettings.defaultLocale);
+		/**
+		 * 修改说明：仅在本地尚未自定义语言（仍为 'en'）时，才用后端返回的 defaultLocale 覆盖。
+		 * 目的：在本地开发翻译或测试中文时，避免被后端设置自动覆盖本地调试语言。
+		 * 作者：wonkzhang
+		 * 修改日期：2025-12-29
+		 */
+		if (rootStore.defaultLocale === 'en') {
+			rootStore.setDefaultLocale(fetchedSettings.defaultLocale);
+		}
+		console.log('当前默认的语言配置是', rootStore.defaultLocale);
 		rootStore.setBinaryDataMode(fetchedSettings.binaryDataMode);
 
 		if (fetchedSettings.telemetry.enabled) {
