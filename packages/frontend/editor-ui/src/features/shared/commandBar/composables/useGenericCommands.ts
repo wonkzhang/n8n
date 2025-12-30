@@ -115,7 +115,12 @@ export function useGenericCommands(): CommandGroup {
 			? [
 					{
 						id: ITEM_ID.INSIGHTS,
-						title: 'Insights',
+						/**
+						 * 修改 Insights 为国际化引用
+						 * @author wonkzhang
+						 * @date 2025-12-30
+						 */
+						title: i18n.baseText('insights.heading'),
 						section: i18n.baseText('commandBar.sections.general'),
 						handler: () => {
 							void router.push({ name: VIEWS.INSIGHTS });

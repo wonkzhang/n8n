@@ -141,7 +141,12 @@ const mainMenuItems = computed<IMenuItem[]>(() => [
 	{
 		id: 'insights',
 		icon: 'chart-column-decreasing',
-		label: 'Insights',
+		/**
+		 * 修改 Insights 为国际化引用
+		 * @author wonkzhang
+		 * @date 2025-12-30
+		 */
+		label: i18n.baseText('insights.heading'),
 		position: 'bottom',
 		route: { to: { name: VIEWS.INSIGHTS } },
 		available:
